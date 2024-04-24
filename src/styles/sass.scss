@@ -110,16 +110,28 @@
       }
 
       .currency-selector {
-        //color: #06081A;
         width: 100%;
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 20px;
-        box-sizing: border-box;
-        border: 1px solid #CCCCCC;
-        border-radius: 0.4rem;
-        margin-bottom: 2rem;
-        padding: 1rem;
+        label{
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 20px;
+          padding-bottom: 1rem;
+
+        }
+
+        select{
+          width: 100%;
+          max-width: 29.625rem;
+          color: #06081A;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 20px;
+          box-sizing: border-box;
+          border: 1px solid #CCCCCC;
+          border-radius: 0.4rem;
+          margin-bottom: 2rem;
+          padding: 1rem;
+        }
       }
 
       .exchange-svg {

@@ -130,6 +130,17 @@ a {
 }
 .App .card .converter .currency-selector {
   width: 100%;
+}
+.App .card .converter .currency-selector label {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  padding-bottom: 1rem;
+}
+.App .card .converter .currency-selector select {
+  width: 100%;
+  max-width: 29.625rem;
+  color: #06081A;
   font-weight: 600;
   font-size: 16px;
   line-height: 20px;
