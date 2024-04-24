@@ -4,7 +4,7 @@ import CurrencyConverter from "./CurrencyConverter";
 import LoadingSpinner from "../../utils/spinner";
 import AmountInput from "./AmountInput";
 import { getRates } from "../../utils/getRates";
-import SvgButton from "../../utils/SvgButton"
+import ExchangeSvg from "../../utils/ExchangeSvg"
 import UnitRate from "./UnitRate";
 
 function Converter() {
@@ -35,9 +35,9 @@ function Converter() {
         currencies={rates}
         onChange={(e) => setBaseCurrency(e.target.value)}
       />
-      <dir className="svgButton">
-      <SvgButton />
-      </dir>
+      <button className="exchange-svg">
+        <ExchangeSvg />
+      </button>
       <CurrencySelector
         label="To"
         currencies={rates}
