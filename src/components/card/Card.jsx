@@ -1,9 +1,9 @@
-import CardInputs from  '../inputs/CardInputs'
+import Converter from  './Converter'
 
 function Card() {
   return (
     <div className="card">
-      <CardInputs/>
+      <Converter/>
     </div>
   );
 }
