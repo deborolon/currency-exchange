@@ -29,7 +29,7 @@ function Converter() {
         setTargetCurrency(defaultTarget);
         setLoading(false);
     });
-  }, []);
+  }, [defaultCurrency]);
 
   useEffect(()=>{
     if(amount && targetCurrency && baseCurrency){
@@ -41,8 +41,8 @@ function Converter() {
     }
   }, [amount, baseCurrency, targetCurrency])
 
-  const calculateResult = (result) => {
-    const res = result.baseCurrency.split(",")[0]
+  const currencyParser = (target) => {
+    const res = target.split(",")[0]
     return res
   };
 
@@ -67,10 +67,10 @@ function Converter() {
         defaultValue={targetCurrency}
       />
       <div className="currency-converter">
-        <p>{`${amount} ${baseCurrency.split(",")[0]} = ${result} ${targetCurrency.split(",")[0]}`}</p>
+        <p>{`${amount} ${currencyParser(baseCurrency)} = ${result} ${currencyParser(targetCurrency)}`}</p>
       </div>
       <div className="unit-rate">
-        <p>{`${defaultAmount} ${baseCurrency.split(",")[0]} = ${rateDiff} ${targetCurrency.split(",")[0]}`}</p>
+        <p>{`${defaultAmount} ${currencyParser(baseCurrency)} = ${rateDiff} ${currencyParser(targetCurrency)}`}</p>
       </div>
     </div>
   );

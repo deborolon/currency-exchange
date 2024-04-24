@@ -1,7 +1,7 @@
-@use "./scss/abstracts/variables";
-@use "./scss/abstracts/mixins";
-@use "./scss/base/base";
-@use "./scss/base/resets";
+@use "./abstracts/variables";
+@use "./abstracts/mixins";
+@use "./base/base";
+@use "./base/resets";
 
 //mobile-first
 .App {
