@@ -5,6 +5,7 @@ import AmountInput from "./AmountInput";
 import { getRates } from "../../utils/getRates";
 import ExchangeSvg from "../../utils/ExchangeSvg";
 import CurrencyConverter from "./CurrencyConverter";
+import WarningMessage from '../warning/WarningMessage'
 
 function Converter() {
   const defaultCurrency = "USD";
@@ -72,6 +73,7 @@ function Converter() {
         defaultAmount={defaultAmount}
         rateDiff={rateDiff}
       />
+      <WarningMessage/>
     </div>
   );
 }

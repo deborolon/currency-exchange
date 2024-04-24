@@ -5,7 +5,7 @@ function Header() {
   return (
     <div className="header">
       <TitleNav title="Currency exchange"/>
-      <TitleBanner title="100 EUR to USD - Convert Euros to US Dollars"/>
+      <TitleBanner title="100 USD to EUR - Convert US Dollars to Euros"/>
     </div>
   );
 }

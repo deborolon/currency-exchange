@@ -1,7 +1,8 @@
 function Footer() {
+  const date = `${new Date().toDateString()}, ${new Date().toLocaleTimeString()}`
     return (
       <div className="footer">
-        <p>Euro to US Dollar conversion — Last updated Dec 15, 2022, 19:17 UTC</p>
+        <p>US Dollar to Euro conversion — Last updated {date}</p>
       </div>
     );
   }
