@@ -59,14 +59,9 @@ a {
   font-weight: 600;
   line-height: 32px;
   text-align: center;
-  padding: 4rem 1rem;
+  padding: 4rem 2rem;
 }
 @media screen and (min-width: 768px) {
-  .App .header .banner p {
-    padding: 4rem 16rem;
-  }
-}
-@media screen and (min-width: 1024px) {
   .App .header .banner p {
     padding: 6rem 1rem;
   }
@@ -86,14 +81,9 @@ a {
   left: calc(50% - 31.1rem/2);
   margin-top: -12rem;
 }
-@media screen and (max-width: 767px) {
+@media screen and (min-width: 768px) {
   .App .card {
-    width: 70vw;
-  }
-}
-@media screen and (min-width: 1024px) {
-  .App .card {
-    width: 90vw;
+    width: 95vw;
     height: 43.5rem;
   }
 }
@@ -103,12 +93,20 @@ a {
   align-items: flex-start;
   width: 90%;
   max-width: 31.1rem;
-  height: 4rem;
+  max-height: 48.4rem;
   padding: 2rem 0rem;
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
   .App .card .converter {
-    flex-direction: row;
+    width: 90%;
+    max-width: 100%;
+    max-height: 43.5rem;
+    padding: 4rem 0rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 180px 120px;
+    align-content: center;
+    align-items: center;
   }
 }
 .App .card .converter .amount-input label {
@@ -119,6 +117,7 @@ a {
 }
 .App .card .converter .amount-input input {
   width: 100%;
+  max-width: 29.625rem;
   font-weight: 600;
   font-size: 16px;
   line-height: 20px;
@@ -127,6 +126,14 @@ a {
   border-radius: 0.4rem;
   margin-bottom: 2rem;
   padding: 1rem;
+}
+@media screen and (min-width: 768px) {
+  .App .card .converter .amount-input {
+    width: 100%;
+    min-width: 16.6rem;
+    max-width: 29.625rem;
+    padding-right: 2rem;
+  }
 }
 .App .card .converter .currency-selector {
   width: 100%;
@@ -150,13 +157,27 @@ a {
   margin-bottom: 2rem;
   padding: 1rem;
 }
+@media screen and (min-width: 768px) {
+  .App .card .converter .currency-selector {
+    width: 100%;
+    min-width: 16.6rem;
+    max-width: 29.625rem;
+  }
+}
 .App .card .converter .exchange-svg {
+  width: 4, 2rem;
+  height: 4, 2rem;
   background-color: transparent;
   border: none;
-  padding: 0px;
+  padding: 1rem;
   margin-bottom: 2rem;
 }
-.App .card .converter .currency-converter {
+@media screen and (min-width: 768px) {
+  .App .card .converter .exchange-svg {
+    margin-bottom: 0rem;
+  }
+}
+.App .card .converter .currency-converter .current {
   width: 100%;
   box-sizing: border-box;
   font-weight: 600;
@@ -164,12 +185,12 @@ a {
   line-height: 36px;
 }
 @media screen and (max-width: 767px) {
-  .App .card .converter .currency-converter {
+  .App .card .converter .currency-converter .current {
     font-size: 20px;
     line-height: 22px;
   }
 }
-.App .card .converter .unit-rate {
+.App .card .converter .currency-converter .unit-rate {
   width: 100%;
   color: #757575;
   box-sizing: border-box;
@@ -178,10 +199,13 @@ a {
   line-height: 36px;
 }
 @media screen and (max-width: 767px) {
-  .App .card .converter .unit-rate {
+  .App .card .converter .currency-converter .unit-rate {
     font-size: 12px;
     line-height: 22px;
   }
+}
+.App .warning-message {
+  background-color: var(--warning);
 }
 .App .footer {
   width: 70vw;
@@ -193,7 +217,7 @@ a {
   padding: 0.6rem;
   left: calc(50% - 31.1rem/2);
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
   .App .footer {
     display: flex;
     justify-content: end;

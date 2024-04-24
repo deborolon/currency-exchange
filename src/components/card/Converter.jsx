@@ -4,12 +4,13 @@ import LoadingSpinner from "../../utils/spinner";
 import AmountInput from "./AmountInput";
 import { getRates } from "../../utils/getRates";
 import ExchangeSvg from "../../utils/ExchangeSvg";
+import CurrencyConverter from "./CurrencyConverter";
 
 function Converter() {
-  const defaultCurrency = "EUR";
+  const defaultCurrency = "USD";
   const defaultAmount= 1;
-  const defaultBaseCurrency = "EUR,1";
-  const defaultTarget = "USD,1.0674";
+  const defaultBaseCurrency = "USD,1";
+  const defaultTarget = "EUR,0.9358038555118847";
   const [rates, setRates] = useState([]);
   const [loading, setLoading] = useState(true);
   const [amount, setAmount] = useState('');
@@ -41,11 +42,8 @@ function Converter() {
     }
   }, [amount, baseCurrency, targetCurrency])
 
-  const currencyParser = (target) => {
-    const res = target.split(",")[0]
-    return res
-  };
-
+  console.log('RATES: ', rates)
+  // console.log('defaultBaseCurrency ', defaultBaseCurrency)
   return loading && baseCurrency && targetCurrency ? (
     <LoadingSpinner />
   ) : (
@@ -66,12 +64,14 @@ function Converter() {
         onChange={(e) => setTargetCurrency(e.target.value)}
         defaultValue={targetCurrency}
       />
-      <div className="currency-converter">
-        <p>{`${amount} ${currencyParser(baseCurrency)} = ${result} ${currencyParser(targetCurrency)}`}</p>
-      </div>
-      <div className="unit-rate">
-        <p>{`${defaultAmount} ${currencyParser(baseCurrency)} = ${rateDiff} ${currencyParser(targetCurrency)}`}</p>
-      </div>
+      <CurrencyConverter
+        amount={amount}
+        baseCurrency={baseCurrency}
+        result={result}
+        targetCurrency={targetCurrency}
+        defaultAmount={defaultAmount}
+        rateDiff={rateDiff}
+      />
     </div>
   );
 }

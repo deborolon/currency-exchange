@@ -38,11 +38,7 @@
         font-weight: 600;
         line-height: 32px;
         text-align: center;
-        padding: 4rem 1rem;
-
-        @include mixins.md {
-          padding: 4rem 16rem;
-        }
+        padding: 4rem 2rem;
 
         @include mixins.lg {
           padding: 6rem 1rem;
@@ -66,12 +62,8 @@
     left: calc(50% - #{31.1rem / 2});
     margin-top: -12rem;
 
-    @include mixins.sm {
-      width: 70vw;
-    }
-
     @include mixins.lg {
-      width: 90vw;
+      width: 95vw;
       height: 43.5rem;
     }
 
@@ -81,11 +73,19 @@
       align-items: flex-start;
       width: 90%;
       max-width: 31.1rem;
-      height: 4rem;
+      max-height: 48.4rem;
       padding: 2rem 0rem;
 
       @include mixins.lg {
-        flex-direction: row;
+        width: 90%;
+        max-width: 100%;
+        max-height: 43.5rem;
+        padding: 4rem 0rem;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 180px 120px;
+        align-content: center;
+        align-items: center;
       }
 
       .amount-input {
@@ -98,6 +98,7 @@
 
         input {
           width: 100%;
+          max-width: 29.625rem;
           font-weight: 600;
           font-size: 16px;
           line-height: 20px;
@@ -106,6 +107,13 @@
           border-radius: 0.4rem;
           margin-bottom: 2rem;
           padding: 1rem;
+        }
+
+        @include mixins.lg{
+          width: 100%;
+          min-width: 16.6rem;
+          max-width: 29.625rem;
+          padding-right: 2rem;
         }
       }
 
@@ -132,43 +140,60 @@
           margin-bottom: 2rem;
           padding: 1rem;
         }
+
+        @include mixins.lg{
+          width: 100%;
+          min-width: 16.6rem;
+          max-width: 29.625rem;
+        }
       }
 
       .exchange-svg {
+        width: 4,2rem;
+        height: 4,2rem;
         background-color: transparent;
         border: none;
-        padding: 0px;
+        padding: 1rem;
         margin-bottom: 2rem;
+
+        @include mixins.lg{
+          margin-bottom: 0rem;
+        }
       }
 
       .currency-converter {
-        //color: #06081A;
-        width: 100%;
-        box-sizing: border-box;
-        font-weight: 600;
-        font-size: 24px;
-        line-height: 36px;
-
-        @include mixins.sm {
-          font-size: 20px;
-          line-height: 22px;
+        .current{
+          width: 100%;
+          box-sizing: border-box;
+          font-weight: 600;
+          font-size: 24px;
+          line-height: 36px;
+          
+          @include mixins.sm {
+            font-size: 20px;
+            line-height: 22px;
+          }
         }
-      }
 
-      .unit-rate {
-        width: 100%;
-        color: #757575;
-        box-sizing: border-box;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 36px;
-
-        @include mixins.sm {
-          font-size: 12px;
-          line-height: 22px;
+        .unit-rate {
+          width: 100%;
+          color: #757575;
+          box-sizing: border-box;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 36px;
+  
+          @include mixins.sm {
+            font-size: 12px;
+            line-height: 22px;
+          }
         }
       }
     }
+  }
+
+  .warning-message{
+    background-color: var(--warning);
   }
 
   .footer {
