@@ -6,7 +6,7 @@ export const getRates = async (base) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error("E: ", error);
+    console.error("API ERROR: ", error);
     return [];
   }
 };

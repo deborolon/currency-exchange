@@ -20,22 +20,22 @@ function Converter() {
   const [rateDiff, setRateDiff] = useState('');
   const [result, setResult] = useState('');
 
-  //Fetch to API one time only
   useEffect(() => {
     getRates(defaultCurrency)
       .then((res) => {
-        const ratesArray = Object.entries(res.rates).map(([currency, rate]) => ({ currency, rate }));
-        setRates(ratesArray);
-        setAmount(defaultAmount);
-        setBaseCurrency(defaultBaseCurrency);
-        setTargetCurrency(defaultTarget);
-        setLoading(false);
+        if(res & res.rates){
+          const ratesArray = Object.entries(res.rates).map(([currency, rate]) => ({ currency, rate }));
+          setRates(ratesArray);
+          setAmount(defaultAmount);
+          setBaseCurrency(defaultBaseCurrency);
+          setTargetCurrency(defaultTarget);
+          setLoading(false);
+        }
     });
-  }, [defaultCurrency]);
+  }, []);
 
   useEffect(()=>{
     if(amount && targetCurrency && baseCurrency){
-      //TODO: calculo al cambiar base currency;
       const valTarget = parseFloat(targetCurrency.split(",")[1]);
       setRateDiff(valTarget);
       const calculate = parseFloat(amount) * valTarget;
@@ -43,8 +43,6 @@ function Converter() {
     }
   }, [amount, baseCurrency, targetCurrency])
 
-  console.log('RATES: ', rates)
-  // console.log('defaultBaseCurrency ', defaultBaseCurrency)
   return loading && baseCurrency && targetCurrency ? (
     <LoadingSpinner />
   ) : (
