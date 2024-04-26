@@ -5,7 +5,8 @@ import CurrencyConverter from "./CurrencyConverter";
 import WarningMessage from "../warning/WarningMessage";
 
 const Test = () => {
-  const [amount, setAmount] = useState(1);
+  const [amount, setAmount] = useState(1)
+  const regex = /^\d{0,10}(?:\.\d{0,4})?$/;
   const [currencies, setCurrencies] = useState([]);
   const [fromCurrency, setFromCurrency] = useState("");
   const [toCurrency, setToCurrency] = useState("");
@@ -15,7 +16,7 @@ const Test = () => {
 
   //Fetch currencies
   useEffect(() => {
-    fetch("https://api.vatcomply.com/currencies")
+    fetch(process.env.REACT_APP_GET_CURRENCIES)
       .then((response) => response.json())
       .then((data) => {
         setCurrencies(Object.keys(data));
@@ -29,7 +30,7 @@ const Test = () => {
   //Fetch rates
   useEffect(() => {
     if (fromCurrency && toCurrency) {
-      fetch(`https://api.vatcomply.com/rates?base=${fromCurrency}`)
+      fetch(process.env.REACT_APP_GET_RATES + `${fromCurrency}`)
         .then((response) => response.json())
         .then((data) => {
           setExchangeRate(data.rates[toCurrency]);
@@ -40,10 +41,9 @@ const Test = () => {
     }
   }, [fromCurrency, toCurrency]);
 
-  // Handle amount change
   const handleAmountChange = (e) => {
     const value = e.target.value;
-    if (/^\d*\.?\d*$/.test(value)) {
+    if (regex.test(value)) {
       setAmount(value);
       setConvertedAmount(parseFloat(value) * exchangeRate);
     }
@@ -101,7 +101,13 @@ const Test = () => {
           ))}
         </select>
       </div>
-      <CurrencyConverter convertedAmount={convertedAmount} />
+      <CurrencyConverter
+        amount={amount}
+        fromCurrency={fromCurrency}
+        convertedAmount={convertedAmount}
+        toCurrency={toCurrency}
+        exchangeRate={exchangeRate}
+      />
       <WarningMessage />
     </div>
   );
